@@ -1,0 +1,34 @@
+name: builtin-tiny
+description: >
+  Three tiny Python bugs with hidden tests. Each one fails on the starting
+  file and passes once that bug is fixed. These tasks exercise the harness.
+  They are not a benchmark of real coding agents.
+tasks:
+  - id: fix-inclusive-sum
+    workspace: fix-inclusive-sum/workspace
+    hidden: fix-inclusive-sum/hidden
+    timeout_seconds: 60
+    prompt: |
+      The function sum_inclusive(start, end) in ranges.py is wrong. It should
+      add every integer from start through end, including both ends. If start
+      is greater than end, return 0. Fix the function. A hidden test suite
+      will check it; do not create tests.
+    verify: "{python} -m unittest discover -s tests -q"
+  - id: fix-median
+    workspace: fix-median/workspace
+    hidden: fix-median/hidden
+    timeout_seconds: 60
+    prompt: |
+      The median function in stats_util.py should return the middle value of a
+      sorted copy. When the count is even, return the average of the two middle
+      values. An empty input should raise ValueError. Fix the function.
+    verify: "{python} -m unittest discover -s tests -q"
+  - id: fix-slugify
+    workspace: fix-slugify/workspace
+    hidden: fix-slugify/hidden
+    timeout_seconds: 60
+    prompt: |
+      slugify in slug.py should turn text into a URL slug: trim ends, lowercase,
+      treat any run of characters that are not letters or digits as a single
+      hyphen, and strip hyphens from the ends. Fix the function.
+    verify: "{python} -m unittest discover -s tests -q"
