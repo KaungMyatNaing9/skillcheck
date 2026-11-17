@@ -1,0 +1,10 @@
+name: minimal-example
+description: A one-file example of the task format. The function is wrong on purpose.
+tasks:
+  - id: fix-add
+    workspace: workspace
+    hidden: hidden
+    timeout_seconds: 30
+    prompt: |
+      Fix add in app.py so it returns the sum of its two integers.
+    verify: "{python} -m unittest discover -s tests -q"

@@ -1,0 +1,2 @@
+recursive-include src/skillcheck/fixtures *
+include src/skillcheck/py.typed
